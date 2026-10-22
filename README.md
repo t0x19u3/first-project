@@ -1,13 +1,22 @@
-# 1. Sınıf Öğrencileri İçin Çalışma ve Rutin Planı 🌟
+# İlkokul Öğrenme Portalı & Eğitici İçerikler 🌟
 
-Bu proje, 1. sınıfa (6-7 yaş) başlayan öğrencilerin okul ve öğrenme süreçlerine keyifle, sıkılmadan ve düzenli alışkanlıklar kazanarak uyum sağlamaları için pedagojik esaslara uygun olarak hazırlanmış **interaktif bir çalışma ve rutin rehberidir**.
+Bu proje, ilkokul öğrencileri için pedagojik esaslara uygun olarak hazırlanmış eğitim materyalleri ve interaktif araçlar içerir:
 
-## 🎯 Temel İlkeler ve Yaklaşım
-- **Kısa Bloklar:** 6-7 yaşındaki çocukların ortalama odaklanma süresi **15-20 dakikadır**. Günlük 15-20 dakikalık iki çalışma bloğu yeterlidir.
-- **Oyunla Öğrenme:** Soyut kurallar yerine ses oyunları, ritmik sayma şarkıları ve nesnelerle çalışma etkilidir.
-- **Yıldız ve Ödül Sistemi:** Çocukların kendi sorumluluklarını takip etmelerini sağlayan sevimli yıldız çizelgesi.
-- **Yazdırılabilir (Print-Friendly):** Buzdolabına veya çocuğun çalışma masasına asabilmek için tek tıkla yazdırılabilir veya PDF yapılabilir.
+## 🎬 3. Sınıf Fen Bilimleri: Canlılar Dünyası Eğitici Video
+- **Canlı ve Cansız Varlıklar:** Çevremizdeki varlıkları tanıma.
+- **Canlıların 7 Ortak Özelliği:** Büyüme ve gelişme, beslenme, solunum, hareket, boşaltım, çoğalma (üreme), uyarılara tepki.
+- **Canlılar Alemi Sınıflandırması:** Bitkiler, Hayvanlar, Mantarlar (bitki değildir!), Mikroskobik Canlılar.
+- **Türkçe Seslendirme & Canlı Altyazı:** Web Speech API ile senkronize seslendirme ve altyazı desteği.
+- **Fon Müziği & Efektler:** Web Audio API ile üretilmiş huzurlu doğa tınıları.
+- **Video İndirme (.webm):** `MediaRecorder` ile doğrudan video kaydetme ve indirme imkanı.
+- **İnteraktif Bilgi Yarışması (Mini Quiz):** Öğrenilen bilgileri pekiştiren 3 soruluk mini test.
 
-## 🚀 Canlı Önizleme
-Uygulamayı ve çizelgeyi tarayıcınızda görüntülemek için:
-👉 **[1. Sınıf Çalışma Planı Canlı Sitesi](https://antigravity.luch.dev/site/7d4411f9-0eef-42ca-93d3-4d5bea50019c/80b3027779da6131add7cb50/)**
+## 🎒 1. Sınıf Öğrencileri İçin Çalışma ve Rutin Planı
+- **Kısa Bloklar:** 15-20 dakikalık odaklanma süreleri.
+- **Etkileşimli Yıldız Tablosu:** Görevleri tamamladıkça konfeti eşliğinde yıldız toplama.
+- **15 Dk Çocuk Pomodoro Sayacı:** Görsel süre takibi.
+- **Yazdırılabilir (Print/PDF):** Masaya veya buzdolabına asmak için tek tıkla çıktı alma.
+
+## 🌐 Canlı Önizleme
+Uygulamayı ve videoyu tarayıcınızda deneyimlemek için:
+👉 **[Eğitici Video ve Portalı Aç](https://antigravity.luch.dev/site/7d4411f9-0eef-42ca-93d3-4d5bea50019c/80b3027779da6131add7cb50/)**
