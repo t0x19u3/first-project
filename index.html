@@ -1,0 +1,688 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>1. Sınıf Çalışma ve Rutin Planlayıcı 🌟</title>
+  <!-- Google Fonts: Fredoka & Nunito -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;500;600;700&family=Nunito:wght@400;600;700;800&display=swap" rel="stylesheet">
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <!-- Canvas Confetti -->
+  <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: {
+            fredoka: ['Fredoka', 'sans-serif'],
+            nunito: ['Nunito', 'sans-serif'],
+          },
+          colors: {
+            sunny: '#FFB703',
+            coral: '#FB8500',
+            sky: '#219EBC',
+            deepblue: '#023047',
+            softblue: '#8ECAE6',
+            mint: '#06D6A0',
+            pastelPink: '#FFD166',
+            bubbleGum: '#FF6B6B'
+          }
+        }
+      }
+    }
+  </script>
+  <style>
+    body {
+      font-family: 'Nunito', sans-serif;
+    }
+    h1, h2, h3, h4, .font-heading {
+      font-family: 'Fredoka', cursive, sans-serif;
+    }
+    .task-checkbox:checked + label {
+      text-decoration: line-through;
+      color: #9CA3AF;
+    }
+    @media print {
+      .no-print {
+        display: none !important;
+      }
+      body {
+        background: white !important;
+        color: black !important;
+      }
+      .print-card {
+        box-shadow: none !important;
+        border: 1px solid #ccc !important;
+        page-break-inside: avoid;
+      }
+    }
+    .star-pop {
+      animation: pop 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    }
+    @keyframes pop {
+      0% { transform: scale(0.6); }
+      70% { transform: scale(1.25); }
+      100% { transform: scale(1); }
+    }
+  </style>
+</head>
+<body class="bg-gradient-to-br from-amber-50 via-sky-50 to-indigo-50 min-h-screen text-slate-800">
+
+  <!-- Header / Navigation -->
+  <header class="bg-white/90 backdrop-blur-md shadow-sm border-b border-amber-100 sticky top-0 z-40">
+    <div class="max-w-6xl mx-auto px-4 py-3 sm:py-4 flex flex-wrap items-center justify-between gap-3">
+      <div class="flex items-center space-x-3">
+        <span class="text-3xl sm:text-4xl">🎒</span>
+        <div>
+          <h1 class="text-xl sm:text-2xl font-bold text-slate-800 flex items-center gap-2">
+            1. Sınıf Çalışma Planı <span class="text-xs bg-amber-100 text-amber-800 font-bold px-2 py-0.5 rounded-full">6-7 Yaş</span>
+          </h1>
+          <p class="text-xs sm:text-sm text-slate-500">Oyunla Öğrenme, Düzenli Alışkanlıklar & Yıldız Takip Tablosu</p>
+        </div>
+      </div>
+      <div class="flex items-center gap-2 no-print">
+        <button onclick="window.print()" class="px-4 py-2 bg-white border border-slate-200 text-slate-700 hover:bg-slate-50 font-semibold rounded-xl text-sm flex items-center gap-2 shadow-sm transition">
+          <i class="fa-solid fa-print text-sky-600"></i>
+          <span>Yazdır / PDF</span>
+        </button>
+        <a href="#yildiz-tablosu" class="px-4 py-2 bg-gradient-to-r from-amber-400 to-coral text-white font-bold rounded-xl text-sm flex items-center gap-2 shadow hover:opacity-95 transition">
+          <i class="fa-solid fa-star"></i>
+          <span>Yıldız Tablom</span>
+        </a>
+      </div>
+    </div>
+  </header>
+
+  <main class="max-w-6xl mx-auto px-4 py-6 sm:py-8 space-y-8">
+
+    <!-- Hero Banner with 1st Grade Core Principles -->
+    <section class="bg-gradient-to-r from-sky-500 via-teal-500 to-emerald-500 rounded-3xl p-6 sm:p-8 text-white shadow-lg relative overflow-hidden">
+      <div class="absolute -right-6 -bottom-6 text-9xl opacity-15 pointer-events-none select-none">
+        🌟
+      </div>
+      <div class="relative z-10 max-w-3xl">
+        <span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-white/20 backdrop-blur-sm text-xs font-bold tracking-wide uppercase mb-3">
+          <i class="fa-solid fa-lightbulb text-yellow-300"></i> Pedagojik Altın Kural
+        </span>
+        <h2 class="text-2xl sm:text-3xl md:text-4xl font-extrabold mb-3 leading-snug">
+          1. Sınıfta Amaç Uzun Saatler Ders Değil, <span class="underline decoration-yellow-300 decoration-wavy">Sevgi ve Alışkanlık</span> Kazanmaktır!
+        </h2>
+        <p class="text-sky-50 text-sm sm:text-base leading-relaxed mb-4">
+          6-7 yaş grubu öğrencilerin dikkat süreleri ortalama <strong>15-20 dakikadır</strong>. En verimli yöntem; kısa çalışma blokları (15-20 dk), bol hareketli molalar ve başarıyı ödüllendiren eğlenceli rutinlerdir.
+        </p>
+        <div class="grid grid-cols-2 sm:grid-cols-4 gap-3 text-center pt-2">
+          <div class="bg-white/15 backdrop-blur-sm rounded-2xl p-3 border border-white/20">
+            <div class="text-2xl font-bold font-heading">15 - 20 dk</div>
+            <div class="text-xs text-sky-100 font-semibold">Odaklanma Süresi</div>
+          </div>
+          <div class="bg-white/15 backdrop-blur-sm rounded-2xl p-3 border border-white/20">
+            <div class="text-2xl font-bold font-heading">2 Blok</div>
+            <div class="text-xs text-sky-100 font-semibold">Günlük Max Ders</div>
+          </div>
+          <div class="bg-white/15 backdrop-blur-sm rounded-2xl p-3 border border-white/20">
+            <div class="text-2xl font-bold font-heading">15 dk</div>
+            <div class="text-xs text-sky-100 font-semibold">Birlikte Kitap Saati</div>
+          </div>
+          <div class="bg-white/15 backdrop-blur-sm rounded-2xl p-3 border border-white/20">
+            <div class="text-2xl font-bold font-heading">10 Saat</div>
+            <div class="text-xs text-sky-100 font-semibold">Düzenli Gece Uykusu</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Interactive Tabs / Sections Grid -->
+    <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+      
+      <!-- Left 2 Cols: Schedule & Program -->
+      <div class="lg:col-span-2 space-y-8">
+
+        <!-- Günlük İdeal Zaman Akışı (Görsel Akış) -->
+        <section class="bg-white rounded-3xl p-6 sm:p-7 shadow-sm border border-slate-100 print-card">
+          <div class="flex items-center justify-between mb-5">
+            <div>
+              <h3 class="text-xl font-bold text-slate-800 flex items-center gap-2">
+                <span class="text-coral">⏰</span> Günlük İdeal Zaman Çizelgesi (Okul Sonrası)
+              </h3>
+              <p class="text-xs sm:text-sm text-slate-500">Okuldan eve dönüşten uyku saatine kadar dengeli akış</p>
+            </div>
+            <span class="text-xs font-semibold px-2.5 py-1 bg-amber-50 text-amber-700 rounded-lg">Önerilen Saatler</span>
+          </div>
+
+          <div class="relative border-l-2 border-amber-200 ml-4 pl-6 space-y-6">
+
+            <!-- Item 1 -->
+            <div class="relative group">
+              <span class="absolute -left-[35px] top-0 w-8 h-8 rounded-full bg-emerald-100 border-2 border-emerald-400 flex items-center justify-center text-sm">
+                🏡
+              </span>
+              <div class="bg-emerald-50/60 p-4 rounded-2xl border border-emerald-100">
+                <div class="flex items-center justify-between text-xs font-bold text-emerald-800 mb-1">
+                  <span>15:30 - 16:30</span>
+                  <span class="bg-emerald-200/60 px-2 py-0.5 rounded-full">Okul Dönüşü & Rahatlama</span>
+                </div>
+                <h4 class="font-bold text-slate-800 text-base">Eve Varış, Dinlenme ve Sağlıklı Atıştırmalık</h4>
+                <p class="text-xs sm:text-sm text-slate-600 mt-1">
+                  Üst değiştirme, el-yüz yıkama, meyve veya kuruyemiş atıştırma. <strong>Hemen derse oturtulmamalı</strong>; günün yorgunluğunu atması ve serbestçe dinlenmesi sağlanır.
+                </p>
+              </div>
+            </div>
+
+            <!-- Item 2 -->
+            <div class="relative group">
+              <span class="absolute -left-[35px] top-0 w-8 h-8 rounded-full bg-sky-100 border-2 border-sky-400 flex items-center justify-center text-sm">
+                ✏️
+              </span>
+              <div class="bg-sky-50/60 p-4 rounded-2xl border border-sky-100">
+                <div class="flex items-center justify-between text-xs font-bold text-sky-800 mb-1">
+                  <span>16:30 - 16:50 (20 Dakika)</span>
+                  <span class="bg-sky-200/60 px-2 py-0.5 rounded-full">1. Çalışma Bloğu</span>
+                </div>
+                <h4 class="font-bold text-slate-800 text-base">Türkçe: Harf, Ses, Hece & Okuma-Yazma Çalışması</h4>
+                <p class="text-xs sm:text-sm text-slate-600 mt-1">
+                  O gün öğrenilen sesin tekrarı, ses hissettirme, çizgi veya hece yazımı. El kasları yorulursa hemen kısa parmak esnetme oyunları yapılır.
+                </p>
+              </div>
+            </div>
+
+            <!-- Item 3 -->
+            <div class="relative group">
+              <span class="absolute -left-[35px] top-0 w-8 h-8 rounded-full bg-amber-100 border-2 border-amber-400 flex items-center justify-center text-sm">
+                ⚽
+              </span>
+              <div class="bg-amber-50/60 p-4 rounded-2xl border border-amber-100">
+                <div class="flex items-center justify-between text-xs font-bold text-amber-800 mb-1">
+                  <span>16:50 - 17:05 (15 Dakika)</span>
+                  <span class="bg-amber-200/60 px-2 py-0.5 rounded-full">Hareketli Mola</span>
+                </div>
+                <h4 class="font-bold text-slate-800 text-base">Beyin Molası (Brain Break)</h4>
+                <p class="text-xs sm:text-sm text-slate-600 mt-1">
+                  Müzikle dans etme, su içme, zıplama veya top atma. <em>Not: Bu molada tablet/telefon gibi ekranlar açılmamalıdır!</em>
+                </p>
+              </div>
+            </div>
+
+            <!-- Item 4 -->
+            <div class="relative group">
+              <span class="absolute -left-[35px] top-0 w-8 h-8 rounded-full bg-purple-100 border-2 border-purple-400 flex items-center justify-center text-sm">
+                🧩
+              </span>
+              <div class="bg-purple-50/60 p-4 rounded-2xl border border-purple-100">
+                <div class="flex items-center justify-between text-xs font-bold text-purple-800 mb-1">
+                  <span>17:05 - 17:25 (20 Dakika)</span>
+                  <span class="bg-purple-200/60 px-2 py-0.5 rounded-full">2. Çalışma Bloğu</span>
+                </div>
+                <h4 class="font-bold text-slate-800 text-base">Matematik Oyunları & Günlük Ödev Tamamlama</h4>
+                <p class="text-xs sm:text-sm text-slate-600 mt-1">
+                  Fasulye veya nohutlarla sayma, ritmik sayma şarkıları, şekil tanıma, ödev defterindeki kısa çalışmaları tamamlama.
+                </p>
+              </div>
+            </div>
+
+            <!-- Item 5 -->
+            <div class="relative group">
+              <span class="absolute -left-[35px] top-0 w-8 h-8 rounded-full bg-pink-100 border-2 border-pink-400 flex items-center justify-center text-sm">
+                🎨
+              </span>
+              <div class="bg-pink-50/60 p-4 rounded-2xl border border-pink-100">
+                <div class="flex items-center justify-between text-xs font-bold text-pink-800 mb-1">
+                  <span>17:25 - 19:30</span>
+                  <span class="bg-pink-200/60 px-2 py-0.5 rounded-full">Oyun & Aile Zamanı</span>
+                </div>
+                <h4 class="font-bold text-slate-800 text-base">Serbest Oyun, Akşam Yemeği & Sohbet</h4>
+                <p class="text-xs sm:text-sm text-slate-600 mt-1">
+                  Lego yapma, resim çizme, parkta koşma ve ailece akşam yemeğinde gün hakkında konuşma.
+                </p>
+              </div>
+            </div>
+
+            <!-- Item 6 -->
+            <div class="relative group">
+              <span class="absolute -left-[35px] top-0 w-8 h-8 rounded-full bg-blue-100 border-2 border-blue-500 flex items-center justify-center text-sm">
+                📖
+              </span>
+              <div class="bg-blue-50/60 p-4 rounded-2xl border border-blue-100">
+                <div class="flex items-center justify-between text-xs font-bold text-blue-800 mb-1">
+                  <span>20:00 - 20:30</span>
+                  <span class="bg-blue-200/60 px-2 py-0.5 rounded-full">Geceye Hazırlık</span>
+                </div>
+                <h4 class="font-bold text-slate-800 text-base">15 dk Masal / Kitap Saati & Çanta Düzenleme</h4>
+                <p class="text-xs sm:text-sm text-slate-600 mt-1">
+                  Anne/babanın sesli kitap okuması veya çocuğun resimlere bakarak anlatması. Ertesi günün okul çantasını ve kıyafetlerini çocukla birlikte hazırlama.
+                </p>
+              </div>
+            </div>
+
+            <!-- Item 7 -->
+            <div class="relative group">
+              <span class="absolute -left-[35px] top-0 w-8 h-8 rounded-full bg-indigo-100 border-2 border-indigo-500 flex items-center justify-center text-sm">
+                🌙
+              </span>
+              <div class="bg-indigo-50/60 p-4 rounded-2xl border border-indigo-100">
+                <div class="flex items-center justify-between text-xs font-bold text-indigo-800 mb-1">
+                  <span>21:00</span>
+                  <span class="bg-indigo-200/60 px-2 py-0.5 rounded-full">Uyku Vakti</span>
+                </div>
+                <h4 class="font-bold text-slate-800 text-base">Işıklar Kapanıyor (Sağlıklı Uyku)</h4>
+                <p class="text-xs sm:text-sm text-slate-600 mt-1">
+                  1. sınıf çocuğunun büyüme hormonu ve öğrenilen bilgilerin hafızaya yerleşmesi için en az 9-10 saat kaliteli gece uykusu gerekir.
+                </p>
+              </div>
+            </div>
+
+          </div>
+        </section>
+
+        <!-- Haftalık Ders ve Etkinlik Temaları -->
+        <section class="bg-white rounded-3xl p-6 sm:p-7 shadow-sm border border-slate-100 print-card">
+          <h3 class="text-xl font-bold text-slate-800 flex items-center gap-2 mb-4">
+            <span class="text-sky-500">🗓️</span> Haftalık Ders ve Beceri Odakları
+          </h3>
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+            
+            <div class="p-4 rounded-2xl bg-amber-50/70 border border-amber-200">
+              <div class="flex items-center gap-2 text-amber-900 font-bold mb-2">
+                <span class="text-xl">🔤</span> Pazartesi: Yeni Ses & Harf Keşfi
+              </div>
+              <ul class="text-xs sm:text-sm text-slate-700 space-y-1.5 list-disc list-inside">
+                <li>Öğrenilen sesin geçtiği nesneleri evde bulma oyunu</li>
+                <li>Havaya, una veya tıraş köpüğüne harf çizme</li>
+                <li>10-15 dk ses tekrarlı okuma/yazma</li>
+              </ul>
+            </div>
+
+            <div class="p-4 rounded-2xl bg-blue-50/70 border border-blue-200">
+              <div class="flex items-center gap-2 text-blue-900 font-bold mb-2">
+                <span class="text-xl">🔢</span> Salı: Sayılar ve Nesnelerle Matematik
+              </div>
+              <ul class="text-xs sm:text-sm text-slate-700 space-y-1.5 list-disc list-inside">
+                <li>Ceviz, mandal veya legolarla 1'erli ve ritmik sayma</li>
+                <li>Basit çok-az, büyük-küçük gruplama alıştırmaları</li>
+                <li>Rakamların doğru yönle yazılışı</li>
+              </ul>
+            </div>
+
+            <div class="p-4 rounded-2xl bg-emerald-50/70 border border-emerald-200">
+              <div class="flex items-center gap-2 text-emerald-900 font-bold mb-2">
+                <span class="text-xl">✍️</span> Çarşamba: Çizgi, Hece & İnce Motor
+              </div>
+              <ul class="text-xs sm:text-sm text-slate-700 space-y-1.5 list-disc list-inside">
+                <li>Oyun hamuru ile harf ve rakam yoğurma</li>
+                <li>Hece kartları ile kelime birleştirme oyunu</li>
+                <li>Makasla güvenli kesme ve boyama çalışmaları</li>
+              </ul>
+            </div>
+
+            <div class="p-4 rounded-2xl bg-purple-50/70 border border-purple-200">
+              <div class="flex items-center gap-2 text-purple-900 font-bold mb-2">
+                <span class="text-xl">🌍</span> Perşembe: Hayat Bilgisi & Akıl Oyunları
+              </div>
+              <ul class="text-xs sm:text-sm text-slate-700 space-y-1.5 list-disc list-inside">
+                <li>Okul kuralları, temizlik ve çevre sohbeti</li>
+                <li>Tangram, yapboz (puzzle) veya labirent bulmacaları</li>
+                <li>Görsel dikkat ve fark bulma oyunları</li>
+              </ul>
+            </div>
+
+            <div class="p-4 rounded-2xl bg-pink-50/70 border border-pink-200 md:col-span-2">
+              <div class="flex items-center gap-2 text-pink-900 font-bold mb-2">
+                <span class="text-xl">🎉</span> Cuma & Hafta Sonu: Haftalık Tekrar & Doğa-Sanat
+              </div>
+              <div class="grid grid-cols-1 sm:grid-cols-2 gap-3 text-xs sm:text-sm text-slate-700">
+                <div>
+                  <strong class="text-pink-950 block mb-1">Cuma Akşamı:</strong>
+                  Haftalık yıldız tablosunun sayımı, küçük tebrik ödülü (birlikte patlamış mısır eşliğinde çizgi film izleme vb.).
+                </div>
+                <div>
+                  <strong class="text-pink-950 block mb-1">Cumartesi - Pazar:</strong>
+                  Park, doğa yürüyüşü, kütüphane ziyareti, tiyatro. Günde sadece 15 dk keyifli hikaye saati yeterlidir.
+                </div>
+              </div>
+            </div>
+
+          </div>
+        </section>
+
+      </div>
+
+      <!-- Right 1 Col: Interactive Star Checklist & Timer & Tips -->
+      <div class="space-y-8">
+
+        <!-- 15-Dk Sevimli Çocuk Sayacı (Pomodoro) -->
+        <section class="bg-white rounded-3xl p-6 shadow-sm border border-slate-100 text-center no-print">
+          <div class="flex items-center justify-between mb-3">
+            <h3 class="font-bold text-slate-800 flex items-center gap-2 text-base">
+              <span>⏱️</span> 15 Dk Odaklanma Sayacı
+            </h3>
+            <span class="text-xs font-bold text-amber-600 bg-amber-50 px-2 py-0.5 rounded-full">Süre Dostu</span>
+          </div>
+          <p class="text-xs text-slate-500 mb-4">Küçük ders blokları için geri sayımı başlatın</p>
+
+          <div class="w-36 h-36 mx-auto rounded-full bg-gradient-to-tr from-amber-400 to-coral flex flex-col items-center justify-center text-white shadow-lg mb-4 relative">
+            <span id="timer-display" class="text-3xl font-black font-heading tracking-wider">15:00</span>
+            <span id="timer-status" class="text-[11px] font-semibold tracking-wide uppercase opacity-90">Hazır</span>
+          </div>
+
+          <div class="flex items-center justify-center gap-2 mb-3">
+            <button id="timer-start" onclick="toggleTimer()" class="px-5 py-2 rounded-xl bg-emerald-500 hover:bg-emerald-600 text-white font-bold text-sm shadow transition flex items-center gap-1.5">
+              <i class="fa-solid fa-play text-xs"></i> <span>Başlat</span>
+            </button>
+            <button onclick="resetTimer(15)" class="px-3 py-2 rounded-xl bg-slate-100 hover:bg-slate-200 text-slate-700 font-semibold text-xs transition">
+              15 Dk
+            </button>
+            <button onclick="resetTimer(20)" class="px-3 py-2 rounded-xl bg-slate-100 hover:bg-slate-200 text-slate-700 font-semibold text-xs transition">
+              20 Dk
+            </button>
+            <button onclick="resetTimer(5)" class="px-3 py-2 rounded-xl bg-amber-100 hover:bg-amber-200 text-amber-800 font-semibold text-xs transition">
+              Mola (5dk)
+            </button>
+          </div>
+          <p class="text-[11px] text-slate-400">Çocuklar süreyi görsel olarak görünce odaklanmaları kolaylaşır!</p>
+        </section>
+
+        <!-- İnteraktif Günlük Yıldız Tablosu (Star Tracker) -->
+        <section id="yildiz-tablosu" class="bg-white rounded-3xl p-6 shadow-sm border border-slate-100 print-card">
+          <div class="flex items-center justify-between mb-2">
+            <h3 class="font-bold text-slate-800 flex items-center gap-2 text-lg">
+              <span class="text-amber-400">⭐</span> Günlük Yıldız Çizelgesi
+            </h3>
+            <span id="star-count" class="text-sm font-extrabold text-amber-600 bg-amber-50 px-2.5 py-1 rounded-full flex items-center gap-1">
+              <span>0</span> / <span>7</span> ⭐
+            </span>
+          </div>
+          <p class="text-xs text-slate-500 mb-4">Her görevi tamamladığında tıkla, yıldızını kazan!</p>
+
+          <!-- Progress Bar -->
+          <div class="w-full bg-slate-100 rounded-full h-3 mb-5 overflow-hidden">
+            <div id="progress-bar" class="bg-gradient-to-r from-amber-400 to-emerald-400 h-3 rounded-full transition-all duration-500" style="width: 0%"></div>
+          </div>
+
+          <!-- Tasks list -->
+          <div class="space-y-2.5" id="task-container">
+
+            <div class="task-item flex items-center justify-between p-3 rounded-2xl border border-slate-100 hover:border-amber-200 bg-slate-50/50 hover:bg-amber-50/40 transition cursor-pointer" onclick="toggleTask(this)">
+              <div class="flex items-center gap-3">
+                <span class="text-xl">👕</span>
+                <span class="text-xs sm:text-sm font-semibold text-slate-700 task-text">Kıyafetimi değiştirdim, ellerimi yıkadım</span>
+              </div>
+              <button class="star-btn w-8 h-8 rounded-full bg-slate-200 text-slate-400 flex items-center justify-center transition">
+                <i class="fa-solid fa-star text-sm"></i>
+              </button>
+            </div>
+
+            <div class="task-item flex items-center justify-between p-3 rounded-2xl border border-slate-100 hover:border-amber-200 bg-slate-50/50 hover:bg-amber-50/40 transition cursor-pointer" onclick="toggleTask(this)">
+              <div class="flex items-center gap-3">
+                <span class="text-xl">🍎</span>
+                <span class="text-xs sm:text-sm font-semibold text-slate-700 task-text">Sağlıklı atıştırmalığımı yedim</span>
+              </div>
+              <button class="star-btn w-8 h-8 rounded-full bg-slate-200 text-slate-400 flex items-center justify-center transition">
+                <i class="fa-solid fa-star text-sm"></i>
+              </button>
+            </div>
+
+            <div class="task-item flex items-center justify-between p-3 rounded-2xl border border-slate-100 hover:border-amber-200 bg-slate-50/50 hover:bg-amber-50/40 transition cursor-pointer" onclick="toggleTask(this)">
+              <div class="flex items-center gap-3">
+                <span class="text-xl">✏️</span>
+                <span class="text-xs sm:text-sm font-semibold text-slate-700 task-text">15-20 dk Harf / Okuma-Yazma yaptım</span>
+              </div>
+              <button class="star-btn w-8 h-8 rounded-full bg-slate-200 text-slate-400 flex items-center justify-center transition">
+                <i class="fa-solid fa-star text-sm"></i>
+              </button>
+            </div>
+
+            <div class="task-item flex items-center justify-between p-3 rounded-2xl border border-slate-100 hover:border-amber-200 bg-slate-50/50 hover:bg-amber-50/40 transition cursor-pointer" onclick="toggleTask(this)">
+              <div class="flex items-center gap-3">
+                <span class="text-xl">🔢</span>
+                <span class="text-xs sm:text-sm font-semibold text-slate-700 task-text">15 dk Sayı/Matematik veya Ödevimi yaptım</span>
+              </div>
+              <button class="star-btn w-8 h-8 rounded-full bg-slate-200 text-slate-400 flex items-center justify-center transition">
+                <i class="fa-solid fa-star text-sm"></i>
+              </button>
+            </div>
+
+            <div class="task-item flex items-center justify-between p-3 rounded-2xl border border-slate-100 hover:border-amber-200 bg-slate-50/50 hover:bg-amber-50/40 transition cursor-pointer" onclick="toggleTask(this)">
+              <div class="flex items-center gap-3">
+                <span class="text-xl">🧸</span>
+                <span class="text-xs sm:text-sm font-semibold text-slate-700 task-text">Oyunumu oynadım & odamı topladım</span>
+              </div>
+              <button class="star-btn w-8 h-8 rounded-full bg-slate-200 text-slate-400 flex items-center justify-center transition">
+                <i class="fa-solid fa-star text-sm"></i>
+              </button>
+            </div>
+
+            <div class="task-item flex items-center justify-between p-3 rounded-2xl border border-slate-100 hover:border-amber-200 bg-slate-50/50 hover:bg-amber-50/40 transition cursor-pointer" onclick="toggleTask(this)">
+              <div class="flex items-center gap-3">
+                <span class="text-xl">📖</span>
+                <span class="text-xs sm:text-sm font-semibold text-slate-700 task-text">15 dk Birlikte kitap okuduk</span>
+              </div>
+              <button class="star-btn w-8 h-8 rounded-full bg-slate-200 text-slate-400 flex items-center justify-center transition">
+                <i class="fa-solid fa-star text-sm"></i>
+              </button>
+            </div>
+
+            <div class="task-item flex items-center justify-between p-3 rounded-2xl border border-slate-100 hover:border-amber-200 bg-slate-50/50 hover:bg-amber-50/40 transition cursor-pointer" onclick="toggleTask(this)">
+              <div class="flex items-center gap-3">
+                <span class="text-xl">🎒</span>
+                <span class="text-xs sm:text-sm font-semibold text-slate-700 task-text">Yarın için çantamı ve kalemlerimi hazırladım</span>
+              </div>
+              <button class="star-btn w-8 h-8 rounded-full bg-slate-200 text-slate-400 flex items-center justify-center transition">
+                <i class="fa-solid fa-star text-sm"></i>
+              </button>
+            </div>
+
+          </div>
+
+          <div class="mt-4 pt-3 border-t border-slate-100 flex items-center justify-between text-xs text-slate-500 no-print">
+            <button onclick="resetStars()" class="text-slate-400 hover:text-slate-600 transition">
+              <i class="fa-solid fa-rotate-left mr-1"></i> Tabloyu Sıfırla
+            </button>
+            <span id="reward-msg" class="font-bold text-emerald-600 hidden">Tebrikler! Günün Yıldızı Sensin! 🌟</span>
+          </div>
+        </section>
+
+        <!-- Velilere Önemli Hatırlatmalar -->
+        <section class="bg-gradient-to-br from-amber-50 to-orange-50 rounded-3xl p-6 border border-amber-200/80 shadow-sm">
+          <h3 class="font-bold text-amber-950 flex items-center gap-2 mb-3 text-base">
+            <span>💡</span> Anne ve Babalara 5 Altın Tavsiye
+          </h3>
+          <ul class="text-xs sm:text-sm text-slate-700 space-y-2.5">
+            <li class="flex items-start gap-2">
+              <span class="text-amber-500 font-bold">1.</span>
+              <span><strong>Kıyaslamayın:</strong> Her çocuğun okuma-yazmaya geçiş ritmi ve kas gelişimi farklıdır.</span>
+            </li>
+            <li class="flex items-start gap-2">
+              <span class="text-amber-500 font-bold">2.</span>
+              <span><strong>Ödevi siz yapmayın:</strong> Sadece yanında rehber olun; hata yapmasına ve silip düzeltmesine fırsat verin.</span>
+            </li>
+            <li class="flex items-start gap-2">
+              <span class="text-amber-500 font-bold">3.</span>
+              <span><strong>Çabayı övün:</strong> "Çok zekisin" yerine "Bugün çok güzel gayret gösterdin, pes etmedin" deyin.</span>
+            </li>
+            <li class="flex items-start gap-2">
+              <span class="text-amber-500 font-bold">4.</span>
+              <span><strong>Masa başında savaşmayın:</strong> Çocuk gerilirse 10 dakika ara verip sarılın, derin nefes alın.</span>
+            </li>
+            <li class="flex items-start gap-2">
+              <span class="text-amber-500 font-bold">5.</span>
+              <span><strong>Ekran kuralı koyun:</strong> Ders öncesi televizyon/tablet odaklanmayı belirgin derecede dağıtır.</span>
+            </li>
+          </ul>
+        </section>
+
+      </div>
+
+    </div>
+
+    <!-- Print Only Footer -->
+    <div class="hidden print:block text-center text-xs text-gray-500 pt-8">
+      1. Sınıf Haftalık Çalışma ve Yıldız Çizelgesi • Sevgi ve sabırla başarıya adım adım!
+    </div>
+
+  </main>
+
+  <!-- Interactive JavaScript -->
+  <script>
+    // Star tasks management
+    function updateProgress() {
+      const tasks = document.querySelectorAll('.task-item');
+      let completed = 0;
+      tasks.forEach(t => {
+        if (t.classList.contains('is-done')) completed++;
+      });
+      const total = tasks.length;
+      const percent = Math.round((completed / total) * 100);
+      
+      document.getElementById('progress-bar').style.width = percent + '%';
+      document.getElementById('star-count').innerHTML = `<span>${completed}</span> / <span>${total}</span> ⭐`;
+      
+      const rewardMsg = document.getElementById('reward-msg');
+      if (completed === total) {
+        rewardMsg.classList.remove('hidden');
+        fireConfetti();
+      } else {
+        rewardMsg.classList.add('hidden');
+      }
+    }
+
+    function toggleTask(element) {
+      const isDone = element.classList.toggle('is-done');
+      const starBtn = element.querySelector('.star-btn');
+      const taskText = element.querySelector('.task-text');
+
+      if (isDone) {
+        starBtn.classList.remove('bg-slate-200', 'text-slate-400');
+        starBtn.classList.add('bg-amber-400', 'text-white', 'star-pop', 'shadow-md');
+        element.classList.add('bg-amber-50/70', 'border-amber-300');
+        taskText.classList.add('line-through', 'text-slate-400');
+        confetti({
+          particleCount: 25,
+          spread: 45,
+          origin: { y: 0.8 }
+        });
+      } else {
+        starBtn.classList.remove('bg-amber-400', 'text-white', 'star-pop', 'shadow-md');
+        starBtn.classList.add('bg-slate-200', 'text-slate-400');
+        element.classList.remove('bg-amber-50/70', 'border-amber-300');
+        taskText.classList.remove('line-through', 'text-slate-400');
+      }
+
+      updateProgress();
+      saveState();
+    }
+
+    function resetStars() {
+      if (confirm("Günün yıldız tablosunu sıfırlamak istiyor musunuz?")) {
+        const tasks = document.querySelectorAll('.task-item');
+        tasks.forEach(element => {
+          element.classList.remove('is-done', 'bg-amber-50/70', 'border-amber-300');
+          const starBtn = element.querySelector('.star-btn');
+          const taskText = element.querySelector('.task-text');
+          starBtn.classList.remove('bg-amber-400', 'text-white', 'star-pop', 'shadow-md');
+          starBtn.classList.add('bg-slate-200', 'text-slate-400');
+          taskText.classList.remove('line-through', 'text-slate-400');
+        });
+        updateProgress();
+        localStorage.removeItem('grade1_tasks');
+      }
+    }
+
+    function saveState() {
+      const states = [];
+      document.querySelectorAll('.task-item').forEach(t => {
+        states.push(t.classList.contains('is-done'));
+      });
+      localStorage.setItem('grade1_tasks', JSON.stringify(states));
+    }
+
+    function loadState() {
+      const saved = localStorage.getItem('grade1_tasks');
+      if (saved) {
+        try {
+          const states = JSON.parse(saved);
+          const tasks = document.querySelectorAll('.task-item');
+          states.forEach((val, idx) => {
+            if (val && tasks[idx]) {
+              toggleTask(tasks[idx]);
+            }
+          });
+        } catch(e) {}
+      }
+    }
+
+    function fireConfetti() {
+      confetti({
+        particleCount: 100,
+        spread: 70,
+        origin: { y: 0.6 }
+      });
+    }
+
+    // Pomodoro / Focus Timer
+    let timerInterval = null;
+    let timeLeft = 15 * 60;
+    let isRunning = false;
+
+    function updateTimerDisplay() {
+      const min = Math.floor(timeLeft / 60);
+      const sec = timeLeft % 60;
+      document.getElementById('timer-display').innerText = 
+        `${min.toString().padStart(2, '0')}:${sec.toString().padStart(2, '0')}`;
+    }
+
+    function toggleTimer() {
+      const btn = document.getElementById('timer-start');
+      const status = document.getElementById('timer-status');
+      
+      if (isRunning) {
+        clearInterval(timerInterval);
+        isRunning = false;
+        btn.innerHTML = `<i class="fa-solid fa-play text-xs"></i> <span>Devam Et</span>`;
+        btn.classList.replace('bg-amber-500', 'bg-emerald-500');
+        status.innerText = 'Duraklatıldı';
+      } else {
+        isRunning = true;
+        btn.innerHTML = `<i class="fa-solid fa-pause text-xs"></i> <span>Duraklat</span>`;
+        btn.classList.replace('bg-emerald-500', 'bg-amber-500');
+        status.innerText = 'Çalışıyor...';
+
+        timerInterval = setInterval(() => {
+          if (timeLeft > 0) {
+            timeLeft--;
+            updateTimerDisplay();
+          } else {
+            clearInterval(timerInterval);
+            isRunning = false;
+            status.innerText = 'Tebrikler! Süre bitti 🎉';
+            btn.innerHTML = `<i class="fa-solid fa-rotate-right text-xs"></i> <span>Yeniden</span>`;
+            fireConfetti();
+            alert("Harikasın! Çalışma süren bitti. Şimdi güzel bir dinlenme molası hak ettin! 🌟");
+          }
+        }, 1000);
+      }
+    }
+
+    function resetTimer(minutes) {
+      clearInterval(timerInterval);
+      isRunning = false;
+      timeLeft = minutes * 60;
+      updateTimerDisplay();
+      const btn = document.getElementById('timer-start');
+      btn.innerHTML = `<i class="fa-solid fa-play text-xs"></i> <span>Başlat</span>`;
+      btn.classList.remove('bg-amber-500');
+      btn.classList.add('bg-emerald-500');
+      document.getElementById('timer-status').innerText = `${minutes} Dk Hazır`;
+    }
+
+    // Init on load
+    window.addEventListener('DOMContentLoaded', () => {
+      loadState();
+      updateProgress();
+    });
+  </script>
+</body>
+</html>
